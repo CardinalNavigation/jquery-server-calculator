@@ -12,6 +12,43 @@ function onReady() {
 
 }
 
+function getMessages() {
+    $.ajax({
+        method: 'GET',
+        url: '/messages'
+    })  // Ajax sends an HTTP Request to the server
+        // Then it waits for: the HTTP Response
+        // When it gets an HTTP Response, it Checks to see if the response code is good!
+        // 'Good' = starts with 2.
+        // 'Bad' = starts with a 4, or a 5
+        // Starts with a 3?   Google it!
+        // If it's bad, go to .catch
+        // If it's good, go to .then
+        .then(function (response) {
+            // let messages = response;
+            // render(messages);
+        }).catch(function (err) {
+            alert('Unable to get messages. Try again later.');
+            console.log(err);
+        })
+}
+
+// function render(messages) {
+// //     let el = $('#messagesOut');
+// //     el.empty();
+
+// //     for (let i = 0; i < messages.length; i++) {
+// //         let item = messages[i];
+// //         el.append(`
+// //             <li class="messageLine" data-index="${i}">
+// //                 <i>${item.user}</i>: ${item.message}
+// //             </li>
+// //             `
+// //         );
+// //     }
+// // }
+
+
 let addition = false;
 let subtraction = false;
 let multiplication = false;
@@ -27,7 +64,7 @@ function packageInput(event) {
     event.preventDefault();
     console.log("button working")
     let input1 = $("#input1").val()
-    let input2 = $("#input1").val()
+    let input2 = $("#input2").val()
     let combinedInputObject = {
         input1: Number(input1),
         input2: Number(input2),
@@ -37,7 +74,21 @@ function packageInput(event) {
         division: division,
     }
     console.log(combinedInputObject)
-    // What do i want to happen when the addition button is pressed?
+
+    $.ajax({
+        method: 'POST',
+        url: '/calculation',
+        data: combinedInputObject
+    }).then(function (response) {
+        // $('#nameIn').val('');
+        // $('#messageIn').val('');
+        // getMessages();
+    }).catch(function (err) {
+        alert('Error sending message. Try again later.');
+        console.log(err);
+    })
 }
+
+
 
 
