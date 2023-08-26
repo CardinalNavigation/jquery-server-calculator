@@ -3,7 +3,7 @@
 Create a user interface where the user can input two values (2 input elements) and the select type of mathematical operation. When the submit (`=` button) is clicked, capture this input, bundle it up in an object, and send this object to the server via a POST. There should also be a 'C' button that will clear the user input fields.
 
 HTML:
-Add H1 for "Server Side Calculator"
+<!-- Add H1 for "Server Side Calculator"
 For Inputs:
 Add One Input Element Before
 Add Button for Addition
@@ -12,10 +12,10 @@ Add Button for Multiplication
 Add Button for Division
 One Input Element After Calculation Buttons
 Add Button for Running The Equation
-Add a Clear button with just the Letter C
+Add a Clear button with just the Letter C -->
 
-Add a Div for the Output
-Add a Div for the history
+<!-- Add a Div for the Output
+Add a Div for the history -->
 
 Javascript Client.JS
 Add Event Listeners for:
