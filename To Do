@@ -1,0 +1,88 @@
+### Calculator
+
+Create a user interface where the user can input two values (2 input elements) and the select type of mathematical operation. When the submit (`=` button) is clicked, capture this input, bundle it up in an object, and send this object to the server via a POST. There should also be a 'C' button that will clear the user input fields.
+
+HTML:
+Add H1 for "Server Side Calculator"
+For Inputs:
+Add One Input Element Before
+Add Button for Addition
+Add Button for Subtraction
+Add Button for Multiplication
+Add Button for Division
+One Input Element After Calculation Buttons
+Add Button for Running The Equation
+Add a Clear button with just the Letter C
+
+Add a Div for the Output
+Add a Div for the history
+
+Javascript Client.JS
+Add Event Listeners for:
+
+* Addition
+* Subtraction
+* Multiplication
+* Division
+* Equals - This is our "submit"
+* Clear
+
+The object we are passing to the server Equation 
+
+EquationToInput = {
+        Input 1 : 
+        Operator: "Division"
+        Input 2:
+}
+.number
+
+<!-- On the server 
+Equation(EquationnToInput.input1) + (EquationnToInput.Operator) + (EquationnToInput.Input2:) -->
+
+4 Seperate Operators?
+if (Operator = "/")
+    EquationnToInput.Operator[0] / EquationnToInput.Operator [2]
+
+History = []
+
+Write the Function that takes in the event. (button click)
+    Does it need to be complicated? Or Does it Just package the input together?
+    Input can be packaged as an object (object will help us conceptualize)
+    Function should package input numbers together it does NOT run the calculation
+
+Set Up AJAX Get and POST Functions to the server
+    (Determine if more than one is needed)
+    POST will be nested inside of the click event listener function
+    GET Function will append to the DOM
+    Test one variable to see if it is going to go through
+
+Serve Side Function:
+    POST: Input 1 + Whatever the operation is + input 2
+    GET: Output to client.js so that it can be appended to the DOM
+    Wait to figure out the guts of this
+
+
+### History
+
+Keep a historical record of all math operations and solutions on the server.
+Display a list of all previous calculations on the page when it loads using a GET request. 
+Update the list when a new calculation is made.
+
+    Create an Variable with an Empty array to hold the history
+    On the server.js file Push() the history as an object  -Into and Array
+    Figure out way to display that information on the DOM
+        Is this another part of the POST/GET function?
+
+Testing:
+Make sure that you console log as you are building the seperate functions
+Start with maybe one input first to make sure it gets all the way through the server and appends to the DOM
+
+
+Build out the server-side logic to compute the numbers as appropriate.
+The server should be able to handle Addition, Subtraction, Multiplication, and Division. 
+Once the calculation is complete, send back the OK. (dont forget the send function at the bottom of the POST
+You should do a GET request after the POST to get the actual calculation.
+
+
+
+> NOTE: History should exist even after refreshing the page. It's expected that the history will go away after restarting the server. We'll talk about long term data storage next week.
