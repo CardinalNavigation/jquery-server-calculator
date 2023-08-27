@@ -56,14 +56,18 @@ function render(answerItem) {
 
 }
 
-function renderHistory() {
-    let historyElement = $('inputHistory');
+function renderHistory(calculationHistoryArray) {
+    let historyElement = $('#inputHistory');
+    historyElement.empty()
     console.log("May History Looks Like", historyElement)
-    historyElement.append(` 
-        <li class="history-line>
-        ${historyElement}
+    for (let i = 0; i < calculationHistoryArray.length; i++) {
+        console.log(calculationHistoryArray[i])
+        historyElement.append(` 
+        <li class="history-line">
+        ${calculationHistoryArray[i]}
         </li>
     `)
+    }
 }
 
 let addition = false;
