@@ -83,6 +83,11 @@ The server should be able to handle Addition, Subtraction, Multiplication, and D
 Once the calculation is complete, send back the OK. (dont forget the send function at the bottom of the POST
 You should do a GET request after the POST to get the actual calculation.
 
+This I still need to do:
+Add functionality to all operator buttons
+    Add true falls swtich for each button
+Add functonality to the equals sign that    switches all of the buttons to false
+Add functionality to the clear button to clear the history
 
 
 > NOTE: History should exist even after refreshing the page. It's expected that the history will go away after restarting the server. We'll talk about long term data storage next week.

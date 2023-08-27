@@ -4,9 +4,9 @@ $(document).ready(onReady);
 function onReady() {
     console.log("Client side javascript works!");
     $('#addition').on('click', additionToTrue)
-    // $('#subtraction').on('click', packageInput)
-    // $('#multiplication').on('click', packageInput)
-    // $('#division').on('click', packageInput)
+    $('#subtraction').on('click', subtractionToTrue)
+    $('#multiplication').on('click', multiplicationToTrue)
+    $('#division').on('click', divisionToTrue)
     $('#equalSign').on('click', packageInput)
     // $('#clear').on('click', packageInput)
 
@@ -39,15 +39,16 @@ function getMessages() {
 
 
 function render(answerItem) {
-    let el = $('#answerField');
-    el.empty();
+    let element = $('#answerField');
+    element.empty();
     console.log("May Answer Looks Like", answerItem)
-    el.append(`
+    element.append(`
                 <h3="answerObject">
                  ${answerItem}
                 </h3>
                 `
     );
+
 }
 
 
@@ -59,7 +60,49 @@ let division = false;
 function additionToTrue() {
     event.preventDefault();
     addition = !addition;
+    subtraction = false;
+    multiplication = false;
+    division = false;
     console.log("Addition is now:", addition)
+    console.log("Subtraction is now:", subtraction)
+    console.log("Mutiplication is now:", multiplication)
+    console.log("Division is now;", division)
+}
+
+function subtractionToTrue() {
+    event.preventDefault();
+    addition = false;
+    subtraction = !subtraction;
+    multiplication = false;
+    division = false;
+    console.log("Addition is now:", addition)
+    console.log("Subtraction is now:", subtraction)
+    console.log("Mutiplication is now:", multiplication)
+    console.log("Division is now;", division)
+}
+
+function multiplicationToTrue() {
+    event.preventDefault();
+    addition = false;
+    subtraction = false;
+    multiplication = !multiplication;
+    division = false;
+    console.log("Addition is now:", addition)
+    console.log("Subtraction is now:", subtraction)
+    console.log("Mutiplication is now:", multiplication)
+    console.log("Division is now;", division)
+}
+
+function divisionToTrue() {
+    event.preventDefault();
+    addition = false;
+    subtraction = false;
+    multiplication = false;
+    division = !division;
+    console.log("Addition is now:", addition)
+    console.log("Subtraction is now:", subtraction)
+    console.log("Mutiplication is now:", multiplication)
+    console.log("Division is now;", division)
 }
 
 function packageInput(event) {
@@ -89,8 +132,22 @@ function packageInput(event) {
         alert('Error sending message. Try again later.');
         console.log(err);
     })
+
+    $('#input1').val('')
+    $('#input2').val('')
+    clearButtons()
 }
 
-
+function clearButtons() {
+    addition = false;
+    subtraction = false;
+    multiplication = false;
+    division = false;
+    console.log('did clear buttons work?')
+    console.log("Addition is now:", addition)
+    console.log("Subtraction is now:", subtraction)
+    console.log("Mutiplication is now:", multiplication)
+    console.log("Division is now;", division)
+}
 
 

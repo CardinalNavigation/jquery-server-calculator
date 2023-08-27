@@ -14,7 +14,7 @@ Build out the server-side logic to compute the numbers as appropriate. The serve
 
 ### History
 
-Keep a historical record of all math operations and solutions on the server. Display a list of all previous calculations on the page when it loads using a GET request. Update the list when a new calculation is made.
+Keep a historical record of all math operations and solutions on the server. Display a list of all previous calculations on the page when it loads using a  GET request. Update the list when a new calculation is made.
 
 > NOTE: History should exist even after refreshing the page. It's expected that the history will go away after restarting the server. We'll talk about long term data storage next week.
 

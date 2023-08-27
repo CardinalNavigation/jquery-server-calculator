@@ -31,6 +31,21 @@ app.post('/calculation', (req, res) => {
         // console.log(sumOfInput);
         answerHistory.push(sumOfInput);
     }
+    if (playerGuessesArray.subtraction === "true") {
+        sumOfInput = Number(playerGuessesArray.input1) - Number(playerGuessesArray.input2)
+        // console.log(sumOfInput);
+        answerHistory.push(sumOfInput);
+    }
+    if (playerGuessesArray.multiplication === "true") {
+        sumOfInput = Number(playerGuessesArray.input1) * Number(playerGuessesArray.input2)
+        // console.log(sumOfInput);
+        answerHistory.push(sumOfInput);
+    }
+    if (playerGuessesArray.division === "true") {
+        sumOfInput = Number(playerGuessesArray.input1) / Number(playerGuessesArray.input2)
+        // console.log(sumOfInput);
+        answerHistory.push(sumOfInput);
+    }
     res.sendStatus(201); // send an HTTP response to the client
 });
 
