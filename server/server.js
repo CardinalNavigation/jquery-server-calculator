@@ -14,17 +14,17 @@ console.log(calculationHistory)
 
 
 app.get('/calculation', (req, res) => {
-    console.log('in /messages GET');
+    // console.log('in /messages GET');
     res.send(answerHistory); // send an HTTP response to the client
 });
 
 app.get('/calcHistory', (req, res) => {
-    console.log('in /messages GET');
+    // console.log('in /messages GET');
     res.send(calculationHistory); // send an HTTP response to the client
 });
 
 app.post('/calculation', (req, res) => {
-    console.log('in /messages POST:', req.body);
+    // console.log('in /messages POST:', req.body);
     let calculatorInput = req.body;
     let calculationResult = 0;
     let calculationString

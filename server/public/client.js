@@ -3,12 +3,13 @@ $(document).ready(onReady);
 
 function onReady() {
     console.log("Client side javascript works!");
-    $('#addition').on('click', additionToTrue)
-    $('#subtraction').on('click', subtractionToTrue)
-    $('#multiplication').on('click', multiplicationToTrue)
-    $('#division').on('click', divisionToTrue)
-    $('#equalSign').on('click', packageInput)
+    $('#addition').on('click', additionToTrue);
+    $('#subtraction').on('click', subtractionToTrue);
+    $('#multiplication').on('click', multiplicationToTrue);
+    $('#division').on('click', divisionToTrue);
+    $('#equalSign').on('click', packageInput);
     // $('#clear').on('click', packageInput)
+    $(document).ready(getHistory);
 
 }
 
