@@ -12,10 +12,11 @@ function onReady() {
 
 }
 
+
 function getMessages() {
     $.ajax({
         method: 'GET',
-        url: '/messages'
+        url: '/calculation'
     })  // Ajax sends an HTTP Request to the server
         // Then it waits for: the HTTP Response
         // When it gets an HTTP Response, it Checks to see if the response code is good!
@@ -25,28 +26,27 @@ function getMessages() {
         // If it's bad, go to .catch
         // If it's good, go to .then
         .then(function (response) {
-            // let messages = response;
-            // render(messages);
+            let answerObject = response;
+            render(answerObject);
         }).catch(function (err) {
             alert('Unable to get messages. Try again later.');
             console.log(err);
         })
 }
 
-// function render(messages) {
-// //     let el = $('#messagesOut');
-// //     el.empty();
 
-// //     for (let i = 0; i < messages.length; i++) {
-// //         let item = messages[i];
-// //         el.append(`
-// //             <li class="messageLine" data-index="${i}">
-// //                 <i>${item.user}</i>: ${item.message}
-// //             </li>
-// //             `
-// //         );
-// //     }
-// // }
+
+function render(answerObject) {
+    let el = $('#answerField');
+    el.empty();
+    console.log("May Answer Array Looks Like", answerObject)
+    el.append(`
+                <li class="answerObject">
+                 ${answerObject}
+                </li>
+                `
+    );
+}
 
 
 let addition = false;
@@ -82,7 +82,7 @@ function packageInput(event) {
     }).then(function (response) {
         // $('#nameIn').val('');
         // $('#messageIn').val('');
-        // getMessages();
+        getMessages();
     }).catch(function (err) {
         alert('Error sending message. Try again later.');
         console.log(err);

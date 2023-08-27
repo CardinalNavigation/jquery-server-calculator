@@ -8,9 +8,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 let calculationHistory = []
-console.log(calculationHistory);
 
-
+app.get('/calculation', (req, res) => {
+    console.log('in /messages GET');
+    res.send(calculationHistory[0]); // send an HTTP response to the client
+});
 
 app.post('/calculation', (req, res) => {
     console.log('in /messages POST:', req.body);
@@ -24,7 +26,8 @@ app.post('/calculation', (req, res) => {
     if (playerGuessesArray.addition === "true") {
         sumOfInput = Number(playerGuessesArray.input1) + Number(playerGuessesArray.input2)
         console.log(sumOfInput);
-        calculationHistory.push(sumOfInput);
+        calculationHistory.unshift(sumOfInput);
+        console.log(calculationHistory)
     }
     // calculationHistory.push();
     res.sendStatus(201); // send an HTTP response to the client
