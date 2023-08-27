@@ -8,7 +8,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 let answerHistory = [];
+let calculationHistory = []
 console.log(answerHistory)
+console.log(calculationHistory)
 
 
 app.get('/calculation', (req, res) => {
@@ -16,35 +18,43 @@ app.get('/calculation', (req, res) => {
     res.send(answerHistory); // send an HTTP response to the client
 });
 
+app.get('/calcHistory', (req, res) => {
+    console.log('in /messages GET');
+    res.send(calculationHistory); // send an HTTP response to the client
+});
 
 app.post('/calculation', (req, res) => {
     console.log('in /messages POST:', req.body);
-    let playerGuessesArray = req.body;
-    // console.log(playerGuessesArray.addition);
-    // console.log(typeof playerGuessesArray.addition)
-    // console.log(playerGuessesArray.input1);
-    // console.log(playerGuessesArray.input2);
-    // console.log(typeof playerGuessesArray.input1)
-    let sumOfInput = 0;
-    if (playerGuessesArray.addition === "true") {
-        sumOfInput = Number(playerGuessesArray.input1) + Number(playerGuessesArray.input2)
-        // console.log(sumOfInput);
-        answerHistory.push(sumOfInput);
+    let calculatorInput = req.body;
+    let calculationResult = 0;
+    let calculationString
+    if (calculatorInput.addition === "true") {
+        calculationResult = Number(calculatorInput.input1) + Number(calculatorInput.input2)
+        calculationString = ` ${calculatorInput.input1} + ${calculatorInput.input2} = ${calculationResult} `
+        console.log(calculationString);
+        calculationHistory.push(calculationString)
+        answerHistory.push(calculationResult);
     }
-    if (playerGuessesArray.subtraction === "true") {
-        sumOfInput = Number(playerGuessesArray.input1) - Number(playerGuessesArray.input2)
-        // console.log(sumOfInput);
-        answerHistory.push(sumOfInput);
+    if (calculatorInput.subtraction === "true") {
+        calculationResult = Number(calculatorInput.input1) - Number(calculatorInput.input2)
+        calculationString = ` ${calculatorInput.input1} - ${calculatorInput.input2} = ${calculationResult} `
+        console.log(calculationString);
+        calculationHistory.push(calculationString)
+        answerHistory.push(calculationResult);
     }
-    if (playerGuessesArray.multiplication === "true") {
-        sumOfInput = Number(playerGuessesArray.input1) * Number(playerGuessesArray.input2)
-        // console.log(sumOfInput);
-        answerHistory.push(sumOfInput);
+    if (calculatorInput.multiplication === "true") {
+        calculationResult = Number(calculatorInput.input1) * Number(calculatorInput.input2)
+        calculationString = ` ${calculatorInput.input1} * ${calculatorInput.input2} = ${calculationResult} `
+        console.log(calculationString);
+        calculationHistory.push(calculationString)
+        answerHistory.push(calculationResult);
     }
-    if (playerGuessesArray.division === "true") {
-        sumOfInput = Number(playerGuessesArray.input1) / Number(playerGuessesArray.input2)
-        // console.log(sumOfInput);
-        answerHistory.push(sumOfInput);
+    if (calculatorInput.division === "true") {
+        calculationResult = Number(calculatorInput.input1) / Number(calculatorInput.input2)
+        calculationString = ` ${calculatorInput.input1} * ${calculatorInput.input2} = ${calculationResult} `
+        console.log(calculationString);
+        calculationHistory.push(calculationString)
+        answerHistory.push(calculationResult);
     }
     res.sendStatus(201); // send an HTTP response to the client
 });

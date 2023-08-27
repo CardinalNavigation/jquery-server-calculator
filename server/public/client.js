@@ -13,36 +13,41 @@ function onReady() {
 }
 
 
-function getMessages() {
+function getAnswers() {
     $.ajax({
         method: 'GET',
         url: '/calculation'
-    })  // Ajax sends an HTTP Request to the server
-        // Then it waits for: the HTTP Response
-        // When it gets an HTTP Response, it Checks to see if the response code is good!
-        // 'Good' = starts with 2.
-        // 'Bad' = starts with a 4, or a 5
-        // Starts with a 3?   Google it!
-        // If it's bad, go to .catch
-        // If it's good, go to .then
-        .then(function (response) {
-            let answerHistory = response;
-            let answerItem = answerHistory.pop()
-            console.log(answerItem)
-            render(answerItem);
-        }).catch(function (err) {
-            alert('Unable to get messages. Try again later.');
-            console.log(err);
-        })
+    }).then(function (response) {
+        let answerHistory = response;
+        let answerItem = answerHistory.pop()
+        console.log(answerItem)
+        render(answerItem);
+    }).catch(function (err) {
+        alert('Unable to get messages. Try again later.');
+        console.log(err);
+    })
+}
+
+function getHistory() {
+    $.ajax({
+        method: 'GET',
+        url: '/calcHistory'
+    }).then(function (response) {
+        let calculationHistory = response;
+        console.log(calculationHistory)
+        renderHistory(calculationHistory);
+    }).catch(function (err) {
+        alert('Unable to get messages. Try again later.');
+        console.log(err);
+    })
 }
 
 
-
 function render(answerItem) {
-    let element = $('#answerField');
-    element.empty();
+    let answerElement = $('#answerField');
+    answerElement.empty();
     console.log("May Answer Looks Like", answerItem)
-    element.append(`
+    answerElement.append(`
                 <h3="answerObject">
                  ${answerItem}
                 </h3>
@@ -51,6 +56,15 @@ function render(answerItem) {
 
 }
 
+function renderHistory() {
+    let historyElement = $('inputHistory');
+    console.log("May History Looks Like", historyElement)
+    historyElement.append(` 
+        <li class="history-line>
+        ${historyElement}
+        </li>
+    `)
+}
 
 let addition = false;
 let subtraction = false;
@@ -63,10 +77,10 @@ function additionToTrue() {
     subtraction = false;
     multiplication = false;
     division = false;
-    console.log("Addition is now:", addition)
-    console.log("Subtraction is now:", subtraction)
-    console.log("Mutiplication is now:", multiplication)
-    console.log("Division is now;", division)
+    // console.log("Addition is now:", addition)
+    // console.log("Subtraction is now:", subtraction)
+    // console.log("Mutiplication is now:", multiplication)
+    // console.log("Division is now;", division)
 }
 
 function subtractionToTrue() {
@@ -75,10 +89,10 @@ function subtractionToTrue() {
     subtraction = !subtraction;
     multiplication = false;
     division = false;
-    console.log("Addition is now:", addition)
-    console.log("Subtraction is now:", subtraction)
-    console.log("Mutiplication is now:", multiplication)
-    console.log("Division is now;", division)
+    // console.log("Addition is now:", addition)
+    // console.log("Subtraction is now:", subtraction)
+    // console.log("Mutiplication is now:", multiplication)
+    // console.log("Division is now;", division)
 }
 
 function multiplicationToTrue() {
@@ -87,10 +101,10 @@ function multiplicationToTrue() {
     subtraction = false;
     multiplication = !multiplication;
     division = false;
-    console.log("Addition is now:", addition)
-    console.log("Subtraction is now:", subtraction)
-    console.log("Mutiplication is now:", multiplication)
-    console.log("Division is now;", division)
+    // console.log("Addition is now:", addition)
+    // console.log("Subtraction is now:", subtraction)
+    // console.log("Mutiplication is now:", multiplication)
+    // console.log("Division is now;", division)
 }
 
 function divisionToTrue() {
@@ -99,15 +113,15 @@ function divisionToTrue() {
     subtraction = false;
     multiplication = false;
     division = !division;
-    console.log("Addition is now:", addition)
-    console.log("Subtraction is now:", subtraction)
-    console.log("Mutiplication is now:", multiplication)
-    console.log("Division is now;", division)
+    // console.log("Addition is now:", addition)
+    // console.log("Subtraction is now:", subtraction)
+    // console.log("Mutiplication is now:", multiplication)
+    // console.log("Division is now;", division)
 }
 
 function packageInput(event) {
     event.preventDefault();
-    console.log("button working")
+    // console.log("button working")
     let input1 = $("#input1").val()
     let input2 = $("#input2").val()
     let combinedInputObject = {
@@ -118,16 +132,15 @@ function packageInput(event) {
         multiplication: multiplication,
         division: division,
     }
-    console.log(combinedInputObject)
+    // console.log(combinedInputObject)
 
     $.ajax({
         method: 'POST',
         url: '/calculation',
         data: combinedInputObject
     }).then(function (response) {
-        // $('#nameIn').val('');
-        // $('#messageIn').val('');
-        getMessages();
+        getAnswers();
+        getHistory();
     }).catch(function (err) {
         alert('Error sending message. Try again later.');
         console.log(err);
@@ -143,11 +156,11 @@ function clearButtons() {
     subtraction = false;
     multiplication = false;
     division = false;
-    console.log('did clear buttons work?')
-    console.log("Addition is now:", addition)
-    console.log("Subtraction is now:", subtraction)
-    console.log("Mutiplication is now:", multiplication)
-    console.log("Division is now;", division)
+    // console.log('did clear buttons work?')
+    // console.log("Addition is now:", addition)
+    // console.log("Subtraction is now:", subtraction)
+    // console.log("Mutiplication is now:", multiplication)
+    // console.log("Division is now;", division)
 }
 
 
