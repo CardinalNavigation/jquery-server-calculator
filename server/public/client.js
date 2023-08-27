@@ -26,8 +26,10 @@ function getMessages() {
         // If it's bad, go to .catch
         // If it's good, go to .then
         .then(function (response) {
-            let answerObject = response;
-            render(answerObject);
+            let answerHistory = response;
+            let answerItem = answerHistory.pop()
+            console.log(answerItem)
+            render(answerItem);
         }).catch(function (err) {
             alert('Unable to get messages. Try again later.');
             console.log(err);
@@ -36,14 +38,14 @@ function getMessages() {
 
 
 
-function render(answerObject) {
+function render(answerItem) {
     let el = $('#answerField');
     el.empty();
-    console.log("May Answer Array Looks Like", answerObject)
+    console.log("May Answer Looks Like", answerItem)
     el.append(`
-                <li class="answerObject">
-                 ${answerObject}
-                </li>
+                <h3="answerObject">
+                 ${answerItem}
+                </h3>
                 `
     );
 }
