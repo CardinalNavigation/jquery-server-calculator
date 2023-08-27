@@ -8,7 +8,7 @@ function onReady() {
     $('#multiplication').on('click', multiplicationToTrue);
     $('#division').on('click', divisionToTrue);
     $('#equalSign').on('click', packageInput);
-    // $('#clear').on('click', packageInput)
+    $('#clear').on('click', clearButtonPress)
     $(document).ready(getHistory);
 
 }
@@ -168,4 +168,11 @@ function clearButtons() {
     // console.log("Division is now;", division)
 }
 
-
+function clearButtonPress() {
+    $('#input1').val('')
+    $('#input2').val('')
+    addition = false;
+    subtraction = false;
+    multiplication = false;
+    division = false;
+}
