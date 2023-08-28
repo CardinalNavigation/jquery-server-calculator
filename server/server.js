@@ -5,12 +5,12 @@ let bodyParser = require('body-parser');
 const app = express();
 app.use(express.static('server/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
-
+const PORT = process.env.PORT || 5000;
 
 let answerHistory = [];
 let calculationHistory = []
-console.log(answerHistory)
-console.log(calculationHistory)
+// console.log(answerHistory)
+// console.log(calculationHistory)
 
 
 app.get('/calculation', (req, res) => {
@@ -62,6 +62,6 @@ app.post('/calculation', (req, res) => {
 
 
 // Routes to here
-app.listen(5000, function () {
+app.listen(PORT, function () {
     console.log(`Running on port 5000.`);
 })
